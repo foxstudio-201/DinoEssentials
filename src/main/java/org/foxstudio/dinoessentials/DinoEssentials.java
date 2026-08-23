@@ -11,6 +11,6 @@ public class DinoEssentials {
     public static final String MODID = "dinoessentials";
 
     public DinoEssentials() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DinoEssentialsConfig.COMMON_SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, DinoEssentialsConfig.SERVER_SPEC);
     }
 }

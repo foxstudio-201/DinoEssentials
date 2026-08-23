@@ -4,7 +4,8 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 /**
  * Cấu hình DinoEssentials — định dạng chat, tab list, prefix/suffix mặc định.
- * File sinh ra: config/dinoessentials-common.toml
+ * Chỉ SERVER mới được cấu hình (client không dùng).
+ * File sinh ra trên server: config/dinoessentials-server.toml
  *
  * Placeholder được hỗ trợ trong {@code format}:
  *   {player}   - tên hiển thị của người chơi (đã gồm prefix/suffix từ mod khác)
@@ -18,7 +19,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
  */
 public final class DinoEssentialsConfig {
 
-    public static final ForgeConfigSpec COMMON_SPEC;
+    public static final ForgeConfigSpec SERVER_SPEC;
 
     public static final ForgeConfigSpec.BooleanValue ENABLED;
     public static final ForgeConfigSpec.BooleanValue CHAT_ENABLED;
@@ -73,7 +74,7 @@ public final class DinoEssentialsConfig {
                 .define("suffix", "");
         b.pop();
 
-        COMMON_SPEC = b.build();
+        SERVER_SPEC = b.build();
     }
 
     private DinoEssentialsConfig() {
