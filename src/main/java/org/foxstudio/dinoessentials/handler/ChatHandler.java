@@ -9,10 +9,6 @@ import org.foxstudio.dinoessentials.DinoEssentials;
 import org.foxstudio.dinoessentials.config.DinoEssentialsConfig;
 import org.foxstudio.dinoessentials.format.Formatter;
 
-/**
- * Chặn tin nhắn chat trước khi broadcast, thay bằng component đã format
- * theo CHAT_FORMAT (prefix + player + suffix + message).
- */
 @Mod.EventBusSubscriber(modid = DinoEssentials.MODID)
 public final class ChatHandler {
 

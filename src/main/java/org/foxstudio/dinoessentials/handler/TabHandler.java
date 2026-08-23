@@ -8,10 +8,6 @@ import org.foxstudio.dinoessentials.DinoEssentials;
 import org.foxstudio.dinoessentials.config.DinoEssentialsConfig;
 import org.foxstudio.dinoessentials.format.Formatter;
 
-/**
- * Đổi tên hiển thị trong tab list và chat (tab name / player name)
- * theo TAB_FORMAT.
- */
 @Mod.EventBusSubscriber(modid = DinoEssentials.MODID)
 public final class TabHandler {
 

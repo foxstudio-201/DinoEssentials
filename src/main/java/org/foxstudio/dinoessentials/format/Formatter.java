@@ -9,25 +9,15 @@ import net.minecraft.server.level.ServerPlayer;
 import org.foxstudio.dinoessentials.api.DinoEssentialsAPI;
 import org.foxstudio.dinoessentials.config.DinoEssentialsConfig;
 
-/**
- * Chuyển format string + placeholder thành Component Minecraft.
- * Hỗ trợ mã màu kiểu EssentialsX: &amp;0-9 &amp;a-f &amp;k-o &amp;r &amp;#RRGGBB
- */
 public final class Formatter {
 
     private Formatter() {
     }
 
-    /**
-     * Format tin nhắn chat theo CHAT_FORMAT.
-     */
     public static Component chat(ServerPlayer player, String message) {
         return format(DinoEssentialsConfig.CHAT_FORMAT.get(), player, message);
     }
 
-    /**
-     * Format tên hiển thị tab list theo TAB_FORMAT.
-     */
     public static Component tab(ServerPlayer player) {
         return format(DinoEssentialsConfig.TAB_FORMAT.get(), player, "");
     }
@@ -49,7 +39,6 @@ public final class Formatter {
                         continue;
                     }
                 }
-                // không phải placeholder hợp lệ — giữ nguyên literal
                 out.append(colorize("{"));
                 i++;
                 continue;
@@ -68,8 +57,6 @@ public final class Formatter {
     private static Component resolve(String key, ServerPlayer player, String message) {
         switch (key) {
             case "player" -> {
-                // dùng getName() (tên thô) thay vì getDisplayName() để tránh
-                // kích hoạt lại NameFormat -> đệ quy vô hạn trong TabHandler
                 return safe(player.getName());
             }
             case "username" -> {
@@ -87,7 +74,6 @@ public final class Formatter {
                 return Component.literal(message);
             }
             default -> {
-                // placeholder do mod khác đăng ký
                 return DinoEssentialsAPI.resolvePlaceholder(key, player);
             }
         }
@@ -101,9 +87,6 @@ public final class Formatter {
         return c == null ? Component.empty() : c;
     }
 
-    /**
-     * Chuyển chuỗi có mã &amp; thành Component với Style tương ứng.
-     */
     public static Component colorize(String input) {
         if (input == null || input.isEmpty()) {
             return Component.empty();
@@ -126,7 +109,6 @@ public final class Formatter {
                         i += 8;
                         continue;
                     } catch (NumberFormatException ignored) {
-                        // không phải hex hợp lệ — xử lý như literal
                     }
                 }
                 ChatFormatting cf = ChatFormatting.getByCode(code);

@@ -7,10 +7,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-/**
- * Registry trung tâm — các mod khác dùng đây để gắn prefix/suffix/placeholder.
- * Đăng ký khi mod init (constructor) là an toàn nhất.
- */
 public final class DinoEssentialsAPI {
 
     private static final CopyOnWriteArrayList<NamedTagProvider> PREFIXES = new CopyOnWriteArrayList<>();
@@ -20,23 +16,14 @@ public final class DinoEssentialsAPI {
     private DinoEssentialsAPI() {
     }
 
-    /**
-     * Đăng ký prefix. Nhiều mod đăng ký sẽ được nối theo thứ tự đăng ký.
-     */
     public static void registerPrefix(String modId, TagProvider provider) {
         PREFIXES.add(new NamedTagProvider(modId, provider));
     }
 
-    /**
-     * Đăng ký suffix.
-     */
     public static void registerSuffix(String modId, TagProvider provider) {
         SUFFIXES.add(new NamedTagProvider(modId, provider));
     }
 
-    /**
-     * Đăng ký placeholder tuỳ biến. Ví dụ "level" → chat format có thể dùng {level}.
-     */
     public static synchronized void registerPlaceholder(String name, PlaceholderProvider provider) {
         PLACEHOLDERS.put(name, provider);
     }

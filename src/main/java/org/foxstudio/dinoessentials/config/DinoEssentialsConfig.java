@@ -18,22 +18,40 @@ public final class DinoEssentialsConfig {
         ForgeConfigSpec.Builder b = new ForgeConfigSpec.Builder();
 
         b.push("general");
-        ENABLED = b.define("enabled", true);
-        CHAT_ENABLED = b.define("chat.enabled", true);
-        TAB_ENABLED = b.define("tab.enabled", true);
+        ENABLED = b
+                .comment("Bật/tắt toàn bộ DinoEssentials.")
+                .define("enabled", true);
+        CHAT_ENABLED = b
+                .comment("Bật/tắt định dạng lại tin nhắn chat.")
+                .define("chat.enabled", true);
+        TAB_ENABLED = b
+                .comment("Bật/tắt đổi tên hiển thị trong tab list.")
+                .define("tab.enabled", true);
         b.pop();
 
         b.push("chat");
-        CHAT_FORMAT = b.define("format", "{prefix}{player}{suffix}&r: {message}");
+        CHAT_FORMAT = b
+                .comment("Định dạng tin nhắn chat.",
+                        "Placeholder: {prefix} {player} {suffix} {message} {username}",
+                        "Màu dùng & kèm chữ: &0-9, &a-f, &l, &o, &n, &m, &k, &r, &#RRGGBB")
+                .define("format", "{prefix}{player}{suffix}&r: {message}");
         b.pop();
 
         b.push("tab");
-        TAB_FORMAT = b.define("format", "{prefix}{team}{player}{suffix}");
+        TAB_FORMAT = b
+                .comment("Định dạng tên hiển thị trong tab list.",
+                        "Placeholder: {prefix} {player} {suffix} {username} {team}",
+                        "{team} = tên đội (do mod dinocore đăng ký).")
+                .define("format", "{prefix}{team}{player}{suffix}");
         b.pop();
 
         b.push("defaults");
-        DEFAULT_PREFIX = b.define("prefix", "");
-        DEFAULT_SUFFIX = b.define("suffix", "");
+        DEFAULT_PREFIX = b
+                .comment("Prefix mặc định cho mọi người chơi. Bỏ trống nếu không dùng.")
+                .define("prefix", "");
+        DEFAULT_SUFFIX = b
+                .comment("Suffix mặc định cho mọi người chơi. Bỏ trống nếu không dùng.")
+                .define("suffix", "");
         b.pop();
 
         SERVER_SPEC = b.build();
