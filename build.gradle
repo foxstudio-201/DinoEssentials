@@ -2,6 +2,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
 group = mod_group_id
@@ -55,7 +56,14 @@ repositories {
     }
 }
 
+mixin {
+    add sourceSets.main, 'dinoessentials.refmap.json'
+    config 'dinoessentials.mixins.json'
+}
+
 dependencies {
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 }
 
