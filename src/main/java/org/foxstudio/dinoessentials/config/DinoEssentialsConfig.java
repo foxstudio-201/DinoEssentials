@@ -9,8 +9,12 @@ public final class DinoEssentialsConfig {
     public static final ForgeConfigSpec.BooleanValue ENABLED;
     public static final ForgeConfigSpec.BooleanValue CHAT_ENABLED;
     public static final ForgeConfigSpec.BooleanValue TAB_ENABLED;
+    public static final ForgeConfigSpec.BooleanValue JOIN_ENABLED;
+    public static final ForgeConfigSpec.BooleanValue LEAVE_ENABLED;
     public static final ForgeConfigSpec.ConfigValue<String> CHAT_FORMAT;
     public static final ForgeConfigSpec.ConfigValue<String> TAB_FORMAT;
+    public static final ForgeConfigSpec.ConfigValue<String> JOIN_FORMAT;
+    public static final ForgeConfigSpec.ConfigValue<String> LEAVE_FORMAT;
     public static final ForgeConfigSpec.ConfigValue<String> DEFAULT_PREFIX;
     public static final ForgeConfigSpec.ConfigValue<String> DEFAULT_SUFFIX;
 
@@ -43,6 +47,26 @@ public final class DinoEssentialsConfig {
                         "Placeholder: {prefix} {player} {suffix} {username} {team}",
                         "{team} = tên đội (do mod dinocore đăng ký).")
                 .define("format", "{prefix}{team}{player}{suffix}");
+        b.pop();
+
+        b.push("join");
+        JOIN_ENABLED = b
+                .comment("Bật/tắt thông báo khi người chơi vào server.")
+                .define("enabled", true);
+        JOIN_FORMAT = b
+                .comment("Thông báo khi người chơi vào server.",
+                        "Placeholder: {prefix} {player} {suffix} {username} {team}")
+                .define("format", "&a+ &e{player}");
+        b.pop();
+
+        b.push("leave");
+        LEAVE_ENABLED = b
+                .comment("Bật/tắt thông báo khi người chơi rời server.")
+                .define("enabled", true);
+        LEAVE_FORMAT = b
+                .comment("Thông báo khi người chơi rời server.",
+                        "Placeholder: {prefix} {player} {suffix} {username} {team}")
+                .define("format", "&c- &e{player}");
         b.pop();
 
         b.push("defaults");

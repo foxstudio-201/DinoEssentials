@@ -22,6 +22,10 @@ public final class Formatter {
         return format(DinoEssentialsConfig.TAB_FORMAT.get(), player, "");
     }
 
+    public static Component joinLeave(String template, ServerPlayer player) {
+        return format(template, player, "");
+    }
+
     private static Component format(String template, ServerPlayer player, String message) {
         MutableComponent out = Component.literal("");
         int i = 0;
