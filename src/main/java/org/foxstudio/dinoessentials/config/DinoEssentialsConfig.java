@@ -55,9 +55,10 @@ public final class DinoEssentialsConfig {
         b.push("tab");
         TAB_FORMAT = b
                 .comment("Định dạng tên hiển thị trong tab list.",
-                        "Placeholder: {prefix}{player}{suffix}{username}",
-                        "Mặc định: {prefix}{player}{suffix}")
-                .define("format", "{prefix}{player}{suffix}");
+                        "Placeholder: {prefix}{player}{suffix}{username}{team}",
+                        "{team} do mod dinocore đăng ký (hiện tên đội, màu theo đội).",
+                        "Mặc định: {prefix}{team}{player}{suffix}")
+                .define("format", "{prefix}{team}{player}{suffix}");
         b.pop();
 
         b.push("defaults");
